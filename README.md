@@ -1,3 +1,5 @@
+[![CI](https://github.com/rubyonracetracks/docker-debian-buster-min-stage1/actions/workflows/build.yml/badge.svg)](https://github.com/rubyonracetracks/docker-debian-buster-min-stage1/actions/workflows/build.yml)
+
 # Docker Debian Buster - Minimal - Stage 1
 
 This repository is used for building the Stage 1 Minimal Debian Buster Docker image for [Ruby on Racetracks](https://www.rubyonracetracks.com/).
