@@ -10,11 +10,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      MY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Set parameters
       - name: Build Docker image
         run: bash build.sh
+
+      - name: Login to GitHub Packages
+        run: echo "$MY_PASSWORD" | docker login -u ${{ github.actor }} --password-stdin ghcr.io
+        if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Publish the Docker image
+        run: source variables.sh && docker push $DOCKER_IMAGE
+        if: ${{ github.ref == 'refs/heads/main' }}
