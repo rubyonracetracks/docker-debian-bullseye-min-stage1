@@ -9,5 +9,5 @@ export ABBREV='min-stage1'
 export OWNER='rubyonracetracks'
 export SUITE='bullseye'
 export DISTRO='debian'
-export DOCKER_IMAGE="$OWNER/docker-$DISTRO-$SUITE-$ABBREV"
+export DOCKER_IMAGE="ghcr.io/$OWNER/docker-$DISTRO-$SUITE-$ABBREV"
 export DOCKER_CONTAINER="container-$DISTRO-$SUITE-$ABBREV"

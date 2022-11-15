@@ -25,4 +25,4 @@ jobs:
         run: echo "$MY_PASSWORD" | docker login -u ${{ github.actor }} --password-stdin ghcr.io
 
       - name: Publish the Docker image
-        run: source variables.sh && docker push ghcr.io/$OWNER/$DOCKER_IMAGE
+        run: source variables.sh && docker push $DOCKER_IMAGE
