@@ -23,6 +23,8 @@ jobs:
 
       - name: Login to GitHub Packages
         run: echo "$MY_PASSWORD" | docker login -u ${{ github.actor }} --password-stdin ghcr.io
+        if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Publish the Docker image
         run: source variables.sh && docker push $DOCKER_IMAGE
+        if: ${{ github.ref == 'refs/heads/main' }}
