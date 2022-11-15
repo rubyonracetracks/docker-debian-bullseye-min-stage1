@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
   schedule:
-    - cron: '32 7 * * *'
+    - cron: '32 7,19 * * *'
 
 jobs:
   build:
@@ -13,9 +13,7 @@ jobs:
     env:
       MY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       - name: Build Docker image
