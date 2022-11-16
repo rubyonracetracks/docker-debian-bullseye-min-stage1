@@ -27,5 +27,5 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Publish the Docker image
-        run: source variables.sh && docker push $DOCKER_IMAGE
+        run: source variables.sh && docker push $DOCKER_IMAGE:latest
         if: ${{ github.ref == 'refs/heads/main' }}
