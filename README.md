@@ -5,7 +5,7 @@
 This repository is used for building the Stage 1 Minimal Debian Bullseye Docker image for [Ruby on Racetracks](https://www.rubyonracetracks.com/).
 
 ## Name of This Docker Image
-
+[ghcr.io/rubyonracetracks/docker-debian-bullseye-min-stage1](https://github.com/rubyonracetracks/docker-debian-bullseye-min-stage1/pkgs/container/docker-debian-bullseye-min-stage1)
 
 ## Upstream Docker Image
 [Official Debian Bullseye Docker image](https://hub.docker.com/_/debian)
