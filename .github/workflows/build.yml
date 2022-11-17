@@ -27,6 +27,5 @@ jobs:
         run: source variables.sh && docker push $DOCKER_IMAGE:latest
         if: ${{ github.ref == 'refs/heads/main' }}
 
-      - uses: actions/delete-package-versions@v3
-        with:
-          min-versions-to-keep: 2
+      - name: List Docker images
+        run: gh api -H "Accept: application/vnd.github+json" /orgs/rubyonracetracks/packages?package_type=container
