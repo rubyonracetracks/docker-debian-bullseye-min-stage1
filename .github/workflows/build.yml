@@ -28,4 +28,5 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
 
       - uses: actions/delete-package-versions@v3
-        min-versions-to-keep: 2
+        with:
+          min-versions-to-keep: 2
