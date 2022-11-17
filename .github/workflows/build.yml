@@ -27,9 +27,5 @@ jobs:
         run: source variables.sh && docker push $DOCKER_IMAGE:latest
         if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: List Docker images
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh api -H "Accept: application/vnd.github+json" /user/packages?package_type=container
-    
-        
+      - uses: actions/delete-package-versions@v3
+        min-versions-to-keep: 2
