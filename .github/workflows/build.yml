@@ -28,4 +28,5 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: List Docker images
-        run: gh api -H "Accept: application/vnd.github+json" /orgs/rubyonracetracks/packages?package_type=container
+        run: gh api https://api.github.com/user/packages/container/docker-debian-bullseye-min-stage1/versions
+
