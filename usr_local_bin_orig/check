@@ -5,4 +5,4 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-/usr/local/bin/check-min-stage1
+/usr/local/bin/check-<ABBREV>
