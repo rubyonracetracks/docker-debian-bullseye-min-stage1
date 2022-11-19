@@ -5,7 +5,7 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-ABBREV='min-stage1'
+ABBREV='<ABBREV>'
 
 T_BEGIN=$(date +'%s')
 
@@ -27,7 +27,7 @@ echo "BEGIN $ABBREV-root actions"
 echo '##########################'
 
 # Adding user
-REGULAR_USER='winner'
+REGULAR_USER='<REGULAR_USER>'
 echo '----------------------------------------------------'
 echo "adduser --disabled-password --gecos '' $REGULAR_USER"
 adduser --disabled-password --gecos '' $REGULAR_USER

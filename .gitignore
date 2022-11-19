@@ -1,1 +1,3 @@
 log/*
+usr_local_bin/*
+Dockerfile

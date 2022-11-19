@@ -5,4 +5,5 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
+bash customize.sh
 wget -O - https://raw.githubusercontent.com/rubyonracetracks/docker-common/main/build-image.sh | bash
