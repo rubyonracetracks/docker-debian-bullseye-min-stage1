@@ -5,7 +5,7 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-ABBREV='min-stage1'
+ABBREV='<ABBREV>'
 
 echo '###########################'
 echo "BEGIN $ABBREV sanity checks"

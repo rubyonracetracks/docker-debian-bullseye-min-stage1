@@ -7,7 +7,8 @@ set -eo pipefail
 
 export ABBREV='min-stage1'
 export OWNER='rubyonracetracks'
-export SUITE='bullseye'
 export DISTRO='debian'
+export SUITE='bullseye'
+export REGULAR_USER='winner'
 export DOCKER_IMAGE="ghcr.io/$OWNER/docker-$DISTRO-$SUITE-$ABBREV"
 export DOCKER_CONTAINER="container-$DISTRO-$SUITE-$ABBREV"
