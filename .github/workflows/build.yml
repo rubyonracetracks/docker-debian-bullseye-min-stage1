@@ -19,10 +19,7 @@ jobs:
       - name: Test Docker image
         run: bash test.sh
 
-      - name: Login to GitHub Packages
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login -u ${{ github.actor }} --password-stdin ghcr.io
-        if: ${{ github.ref == 'refs/heads/main' }}
-
-      - name: Publish the Docker image
-        run: source variables.sh && docker push $DOCKER_IMAGE:latest
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: List Docker images
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api https://api.github.com/user/packages/container/docker-debian-bullseye-min-stage1/versions
