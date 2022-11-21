@@ -15,3 +15,8 @@ jobs:
       # Install jq (allows Bash to work with JSON)
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: List Docker images
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api https://api.github.com/user/packages/container/docker-debian-bullseye-min-stage1/versions
