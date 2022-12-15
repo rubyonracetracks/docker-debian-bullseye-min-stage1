@@ -34,7 +34,7 @@ jobs:
       - name: Delete containers older than a week
         uses: snok/container-retention-policy@v1
         with:
-          image-names: *
+          image-names: sha256*
           cut-off: A week ago UTC
           account-type: org
           org-name: rubyonracetracks
