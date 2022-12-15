@@ -13,13 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Install jq (allows Bash to work with JSON)
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+        # if: ${{ github.ref == 'refs/heads/main' }}
+
       - name: Build Docker image
         run: bash build.sh
 
       - name: Test Docker image
         run: bash test.sh
 
-      - name: Log in to the Docker container registry
+      - name: Log in to the Docker container registry (main branch only)
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -27,10 +32,26 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: Publish the Docker image
+      - name: Publish the Docker image (main branch only)
         run: source variables.sh && docker push $DOCKER_IMAGE:latest
         if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: Log out of the Docker container registry
+      - name: Delete old images (main branch only)
+        uses: snok/container-retention-policy@v1
+        with:
+          image-names: *
+          cut-off: One week ago UTC
+          keep-at-least: 5
+          account-type: personal
+          token: ${{ secrets.PAT }}
+          # if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: List Docker images (main branch only)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api https://api.github.com/user/packages/container/docker-debian-bullseye-min-stage1/versions | jq
+        # if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Log out of the Docker container registry (main branch only)
         run: docker logout ghcr.io
         if: ${{ github.ref == 'refs/heads/main' }}
