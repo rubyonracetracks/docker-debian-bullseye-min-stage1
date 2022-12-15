@@ -40,7 +40,7 @@ jobs:
           org-name: rubyonracetracks
           keep-at-least: 1
           untagged-only: true
-          token: ${{ secrets.PRUNE_SECRET }}
+          token: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Log out of the Docker container registry
