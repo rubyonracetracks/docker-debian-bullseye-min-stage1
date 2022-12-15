@@ -31,6 +31,21 @@ jobs:
         run: source variables.sh && docker push $DOCKER_IMAGE:latest
         if: ${{ github.ref == 'refs/heads/main' }}
 
+      # Install jq (allows Bash to work with JSON)
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+        # if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: List Docker images (main branch only)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api https://api.github.com/user/packages/container/docker-debian-bullseye-min-stage1/versions | jq
+        # if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Prune old Docker images (main branch only)
+        run: python ghcr-prune.py --container 'sha256' --prune-age 3
+        # if: ${{ github.ref == 'refs/heads/main' }}
+
       - name: Log out of the Docker container registry
         run: docker logout ghcr.io
         if: ${{ github.ref == 'refs/heads/main' }}
