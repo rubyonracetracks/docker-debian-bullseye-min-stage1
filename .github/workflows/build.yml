@@ -43,7 +43,7 @@ jobs:
           cut-off: One week ago UTC
           keep-at-least: 5
           account-type: personal
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           # if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: List Docker images (main branch only)
