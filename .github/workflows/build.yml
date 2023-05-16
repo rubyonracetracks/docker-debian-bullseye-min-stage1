@@ -32,7 +32,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Delete containers older than a week
-        uses: snok/container-retention-policy@v1
+        uses: snok/container-retention-policy@v2
         with:
           image-names: docker-debian-bullseye-min-stage1
           cut-off: A week ago UTC
